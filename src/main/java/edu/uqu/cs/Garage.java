@@ -21,6 +21,8 @@ public class Garage{
      * private classType [] varName = new classType[size];
      *
      */
+    
+    private car[] seen = new Car[3];
 
     /************ Part 2 **************/
     /**
@@ -31,6 +33,8 @@ public class Garage{
      * public dataType varName= value;
      *
      */
+    public static int countCars =0;
+
 
     /************ Part 3 **************/
     /**
@@ -45,6 +49,12 @@ public class Garage{
      *     }
      *}
      */
+    
+public Garage (){
+     	   for(int i=0; i< seen.length; i++){
+              seen[i]= new Car();
+          }
+
 
     /************ Part 4 **************/
     /**
@@ -60,6 +70,24 @@ public class Garage{
      * public void methodName(String m)
      */
 
+     public void addCar(String model ) {
+     boolean found = false;
+     for( int i =0 ; i< countCars; i++){
+     if(seen[i].getModel().equals(model)){
+        found = true;
+        seen[i].moveCarIn();
+     }
+    }
+      if(!found){
+     if(countCars < seen.length){
+        Car c = new Car();
+        c.setModel(mod);
+        seen[countCars] =c;
+        seen[countCars].moveCarIn();
+        countCars++;
+     }
+    }
+    }
 
     /************ Part 5 **************/
     /**
@@ -71,6 +99,13 @@ public class Garage{
      * public void methodName(String m)
      *
      */
+    public void moveOut(String model){
+        for(int i =0;i<countCars; i++){
+            if(seen[i].getModel().equals(model)){
+                seen[i].moveCarOut();
+            }
+        }
+    }
 
 
 
@@ -84,6 +119,13 @@ public class Garage{
      * public void methodName(String m)
      *
      */
+     public void moveIn(String model){
+        for(int i =0;i<countCars; i++){
+            if(seen[i].getModel().equals(model)){
+                seen[i].moveCarIn();
+            }
+        }
+    }
 
 
     /************ Part 7 **************/
@@ -95,7 +137,17 @@ public class Garage{
      * public void methodName(String m)
      *
      */
+  public void listCars(){
+  System.out.prinln("all the cars in the garage :");
+   for(int i =0; i<countCars; i++){
+  if(seen[i].getInOutGarage())
+   System.out.println("car" + (i+1) + ": " + seen[i].getModel());
+
+   }
+   system.ot.println();
 
 
+  }
 
+}
 }
